@@ -35,6 +35,7 @@ build {
   name    = "jenkins-master"
   sources = ["source.amazon-ebs.jenkins-master"]
 
+
   provisioner "shell" {
     script          = "../scripts/setup-jenkins.sh"
   }
