@@ -24,10 +24,10 @@ source "amazon-ebs" "jenkins-master" {
   }
   ssh_username = "ec2-user"
   tags = {
-    "Name"        = "Jenkins Master"
-    "OS_Version"  = "Ubuntu 24.04 LTS"
-    "Release"     = "Latest"
-    "Created-by"  = "Packer"
+    "Name"       = "Jenkins Master"
+    "OS_Version" = "Ubuntu 24.04 LTS"
+    "Release"    = "Latest"
+    "Created-by" = "Packer"
   }
 }
 
@@ -37,6 +37,6 @@ build {
 
 
   provisioner "shell" {
-    script          = "../scripts/setup-jenkins.sh"
+    script = "../scripts/setup-jenkins.sh"
   }
 }
