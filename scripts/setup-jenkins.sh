@@ -27,9 +27,12 @@ sudo apt update
 sudo apt install caddy
 
 # Configure Caddy
-echo ":80 {
-  reverse_proxy localhost:8080
-}" | sudo tee /etc/caddy/Caddyfile
+echo "jenkins.missionk8s.xyz {
+        reverse_proxy localhost:8080
+      }" | sudo tee /etc/caddy/Caddyfile
 
+sudo iptables -I INPUT -p tcp --dport 80 -j ACCEPT
+sudo iptables -I INPUT -p tcp --dport 443 -j ACCEPT
 # Restart Caddy
 sudo systemctl restart caddy
+sudo systemctl daemon-reload
