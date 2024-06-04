@@ -20,8 +20,8 @@ The configuration includes the following main sections:
 
 1. Set your AWS credentials in your environment or AWS credentials file.
 2. Update the `packer/packer.pkr.hcl` file with your specific values.
-3. Run `packer build packer/packer.pkr.hcl` to start the build process.
-
+3. Run `packer build -var "jenkins_username=$JENKINS_USERNAME" -var "jenkins_password=$JENKINS_PASSWORD" -var "deployment_env=$DEPLOYMENT_ENV" .` to start the build process.
+  
 ## Built With
 
 - [Packer](https://www.packer.io/) - Open source tool for creating identical machine images for multiple platforms from a single source configuration.

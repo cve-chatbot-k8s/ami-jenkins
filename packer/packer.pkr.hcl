@@ -27,8 +27,17 @@ build {
   name    = "jenkins-master"
   sources = ["source.amazon-ebs.jenkins-master"]
 
+  provisioner "file" {
+    source      = "../groovy/create_user.groovy"
+    destination = "/tmp/create_user.groovy"
+  }
 
   provisioner "shell" {
     script = "../scripts/setup-jenkins.sh"
+    environment_vars = [
+      "JENKINS_USERNAME=${var.jenkins_username}",
+      "JENKINS_PASSWORD=${var.jenkins_password}",
+      "DEPLOYMENT_ENV=${var.deployment_env}"
+    ]
   }
 }
