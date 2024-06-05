@@ -39,12 +39,15 @@ sudo chown jenkins:jenkins jcasc.yaml ./*.groovy
 {
   echo "JENKINS_USERNAME=${JENKINS_USERNAME}"
   echo "JENKINS_PASSWORD=${JENKINS_PASSWORD}"
+  echo "GH_USERNAME=${GH_USERNAME}"
+  echo "GH_ACCESS_KEY=${GH_ACCESS_KEY}"
 } | sudo tee /var/lib/jenkins/env.properties
 
 # Create init.groovy.d directory if it doesn't exist
 sudo mkdir -p /var/lib/jenkins/init.groovy.d/
 # Groovy script for user creation
 sudo mv /tmp/create_user.groovy /var/lib/jenkins/init.groovy.d/
+sudo mv /tmp/credentials.groovy /var/lib/jenkins/init.groovy.d/
 
 # Disable initial setup wizard
 sudo mkdir -p /etc/systemd/system/jenkins.service.d/
@@ -56,8 +59,6 @@ sudo mkdir -p /etc/systemd/system/jenkins.service.d/
 # Reload systemd daemon and restart Jenkins service
 sudo systemctl daemon-reload
 sudo systemctl restart jenkins
-
-
 
 # Start Jenkins
 sudo systemctl enable jenkins
