@@ -1,6 +1,6 @@
 variable "instance_type" {
   description = "The type of instance to use"
-  default     = "t3.micro"
+  default     = "t3.small"
 }
 
 variable "aws_profile" {

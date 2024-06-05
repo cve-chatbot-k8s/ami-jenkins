@@ -32,6 +32,21 @@ build {
     destination = "/tmp/create_user.groovy"
   }
 
+  provisioner "file" {
+    source      = "../scripts/plugins.txt"
+    destination = "/home/ubuntu/plugins.txt"
+  }
+
+  provisioner "file" {
+    source      = "../groovy/jcasc.yaml"
+    destination = "/home/ubuntu/jcasc.yaml"
+  }
+
+  provisioner "file" {
+    source      = "../groovy/webapp_build.groovy"
+    destination = "/home/ubuntu/webapp_build.groovy"
+  }
+
   provisioner "shell" {
     script = "../scripts/setup-jenkins.sh"
     environment_vars = [
