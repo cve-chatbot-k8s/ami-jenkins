@@ -1,17 +1,16 @@
-multibranchPipelineJob('static-site') {
-    branchSources {
-        github {
-            id('csye7125-static-site')
-            scanCredentialsId('jenkins')
-            repoOwner('csye7125')
-            repository('static-site')
-        }
-    }
-
-    orphanedItemStrategy {
-        discardOldItems {
-            numToKeep(-1)
-            daysToKeep(-1)
+pipelineJob('docker-build-publish') {
+    definition {
+        cpsScm {
+            scm {
+                git {
+                    remote {
+                        url('https://github.com/csye7125-su24-team7/static-site')
+                        credentials('github-credentials')
+                    }
+                    branches('main')
+//                    scriptPath('Jenkinsfile')
+                }
+            }
         }
     }
 }

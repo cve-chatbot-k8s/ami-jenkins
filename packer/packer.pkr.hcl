@@ -33,6 +33,11 @@ build {
   }
 
   provisioner "file" {
+    source      = "../groovy/credentials.groovy"
+    destination = "/tmp/credentials.groovy"
+  }
+
+  provisioner "file" {
     source      = "../scripts/plugins.txt"
     destination = "/home/ubuntu/plugins.txt"
   }
@@ -52,7 +57,9 @@ build {
     environment_vars = [
       "JENKINS_USERNAME=${var.jenkins_username}",
       "JENKINS_PASSWORD=${var.jenkins_password}",
-      "DEPLOYMENT_ENV=${var.deployment_env}"
+      "DEPLOYMENT_ENV=${var.deployment_env}",
+      "GH_USERNAME=${var.github_username}",
+      "GH_ACCESS_KEY=${var.github_access_key}",
     ]
   }
 }

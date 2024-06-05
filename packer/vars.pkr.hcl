@@ -30,3 +30,15 @@ variable "deployment_env" {
   type        = string
   default     = "dev"
 }
+
+variable "github_username" {
+  description = "The username for the GitHub setup"
+  type        = string
+  default     = "admin"
+}
+
+variable "github_access_key" {
+  description = "The password for the GitHub setup"
+  type        = string
+  default     = "admin"
+}
