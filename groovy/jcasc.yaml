@@ -1,0 +1,16 @@
+jobs:
+  - file: ./webapp_build.groovy
+
+#credentials:
+#  system:
+#    domainCredentials:
+#      - credentials:
+#          - usernamePassword:
+#              scope: GLOBAL
+#              id: "dockerHubCredentials"
+#              username: "DOCKER_USERNAME"
+#              password: "DOCKER_PASSWORD"
+#              description: "Docker Hub Credentials"
+unclassified:
+  location:
+    url: https://jenkins.missionk8s.xyz
