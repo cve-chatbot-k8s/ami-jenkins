@@ -37,7 +37,7 @@ variable "github_username" {
   default     = "admin"
 }
 
-variable "github_access_token" {
+variable "github_access_key" {
   description = "The password for the GitHub setup"
   type        = string
   default     = "admin"

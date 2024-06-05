@@ -36,10 +36,10 @@ jobs:
       - name: Build Packer image
         run: |
           cd ./packer
-          packer build -var "jenkins_username=${{ secrets.JENKINS_USERNAME }}" -var "jenkins_password=${{ secrets.JENKINS_PASSWORD }}" -var "deployment_env=${{ env.DEPLOYMENT_ENV }}" -var "github_username=${{ secrets.GH_USERNAME }}" -var "github_access_token=${{ secrets.GH_ACCESS_TOKEN }}" .
+          packer build -var "jenkins_username=${{ secrets.JENKINS_USERNAME }}" -var "jenkins_password=${{ secrets.JENKINS_PASSWORD }}" -var "deployment_env=${{ env.DEPLOYMENT_ENV }}" -var "github_username=${{ secrets.GH_USERNAME }}" -var "github_access_key=${{ secrets.GH_ACCESS_KEY }}" .
         env:
           JENKINS_USERNAME: ${{ secrets.JENKINS_USERNAME }}
           JENKINS_PASSWORD: ${{ secrets.JENKINS_PASSWORD }}
           DEPLOYMENT_ENV: ${{ env.DEPLOYMENT_ENV }}
           GH_USERNAME: ${{ secrets.GH_USERNAME }}
-          GH_ACCESS_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
+          GH_ACCESS_KEY: ${{ secrets.GH_ACCESS_KEY }}

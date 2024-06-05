@@ -47,6 +47,7 @@ sudo chown jenkins:jenkins jcasc.yaml ./*.groovy
 sudo mkdir -p /var/lib/jenkins/init.groovy.d/
 # Groovy script for user creation
 sudo mv /tmp/create_user.groovy /var/lib/jenkins/init.groovy.d/
+# Groovy script for credentials
 sudo mv /tmp/credentials.groovy /var/lib/jenkins/init.groovy.d/
 
 # Disable initial setup wizard
