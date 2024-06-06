@@ -41,14 +41,20 @@ sudo chown jenkins:jenkins jcasc.yaml ./*.groovy
   echo "JENKINS_PASSWORD=${JENKINS_PASSWORD}"
   echo "GH_USERNAME=${GH_USERNAME}"
   echo "GH_ACCESS_KEY=${GH_ACCESS_KEY}"
+  echo "DOCKER_USERNAME=${JENKINS_PASSWORD}"
+  echo "DOCKER_PASSWORD=${JENKINS_PASSWORD}"
+
 } | sudo tee /var/lib/jenkins/env.properties
 
 # Create init.groovy.d directory if it doesn't exist
 sudo mkdir -p /var/lib/jenkins/init.groovy.d/
-# Groovy script for user creation
+
+# Groovy script for user creation and docker credentials
 sudo mv /tmp/create_user.groovy /var/lib/jenkins/init.groovy.d/
 # Groovy script for credentials
 sudo mv /tmp/credentials.groovy /var/lib/jenkins/init.groovy.d/
+sudo mv /tmp/docker_cred.groovy /var/lib/jenkins/init.groovy.d/
+
 
 # Disable initial setup wizard
 sudo mkdir -p /etc/systemd/system/jenkins.service.d/
