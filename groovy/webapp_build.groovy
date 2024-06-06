@@ -1,5 +1,3 @@
-import javaposse.jobdsl.dsl.helpers.pipeline.PipelineContext
-
 pipelineJob('docker-build-publish') {
     definition {
         cpsScm {
@@ -10,7 +8,6 @@ pipelineJob('docker-build-publish') {
                         credentials('github-credentials')
                     }
                     branches('main')
-                    scriptPath('Jenkinsfile')
                 }
             }
         }
