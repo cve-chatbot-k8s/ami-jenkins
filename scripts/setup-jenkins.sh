@@ -41,8 +41,8 @@ sudo chown jenkins:jenkins jcasc.yaml ./*.groovy
   echo "JENKINS_PASSWORD=${JENKINS_PASSWORD}"
   echo "GH_USERNAME=${GH_USERNAME}"
   echo "GH_ACCESS_KEY=${GH_ACCESS_KEY}"
-  echo "DOCKER_USERNAME=${JENKINS_PASSWORD}"
-  echo "DOCKER_PASSWORD=${JENKINS_PASSWORD}"
+  echo "DOCKER_USERNAME=${DOCKER_USERNAME}"
+  echo "DOCKER_PASSWORD=${DOCKER_PASSWORD}"
 
 } | sudo tee /var/lib/jenkins/env.properties
 
