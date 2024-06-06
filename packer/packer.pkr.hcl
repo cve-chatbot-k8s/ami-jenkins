@@ -53,8 +53,8 @@ build {
   }
 
   provisioner "file" {
-    source      = "../groovy/docker-cred.groovy"
-    destination = "/tmp/docker-cred.groovy"
+    source      = "../groovy/docker_cred.groovy"
+    destination = "/tmp/docker_cred.groovy"
   }
 
   provisioner "shell" {
