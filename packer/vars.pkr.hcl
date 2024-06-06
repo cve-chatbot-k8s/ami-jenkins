@@ -42,3 +42,15 @@ variable "github_access_key" {
   type        = string
   default     = "admin"
 }
+
+variable "docker_username" {
+  description = "The username of docker hub"
+  type        = string
+  default     = "docker"
+}
+
+variable "docker_password" {
+  description = "The password for the Dockerhub setup"
+  type        = string
+  default     = "docker"
+}

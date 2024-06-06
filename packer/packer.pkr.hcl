@@ -52,6 +52,11 @@ build {
     destination = "/home/ubuntu/webapp_build.groovy"
   }
 
+  provisioner "file" {
+    source      = "../groovy/docker_cred.groovy"
+    destination = "/tmp/docker_cred.groovy"
+  }
+
   provisioner "shell" {
     script = "../scripts/setup-jenkins.sh"
     environment_vars = [
@@ -60,6 +65,8 @@ build {
       "DEPLOYMENT_ENV=${var.deployment_env}",
       "GH_USERNAME=${var.github_username}",
       "GH_ACCESS_KEY=${var.github_access_key}",
+      "DOCKER_USERNAME=${var.docker_username}",
+      "DOCKER_PASSWORD=${var.docker_password}"
     ]
   }
 }
