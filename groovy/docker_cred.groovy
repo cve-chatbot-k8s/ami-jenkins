@@ -8,10 +8,6 @@ import com.cloudbees.plugins.credentials.impl.*
 def env = new Properties()
 env.load(new FileInputStream("/var/lib/jenkins/env.properties"))
 
-
-// def dockerUsername = System.getenv('DOCKER_USERNAME')
-// def dockerPassword = System.getenv('DOCKER_PASSWORD')
-
 def dockerUsername = env.getProperty('DOCKER_USERNAME')
 def dockerPassword = env.getProperty('DOCKER_PASSWORD')
 def credentialsId = 'dockerhub-creds'
