@@ -18,10 +18,10 @@ store = instance.getExtensionList(
 
 githubCredentials = new UsernamePasswordCredentialsImpl(
         CredentialsScope.GLOBAL,
-        "github-credentials", // This is the ID used to reference these credentials
-        "GitHub Credentials", // This is a description
-        username, // Replace with your GitHub username
-        accessKey // Replace with your GitHub access token
+        "github-credentials",
+        "GitHub Credentials",
+        username,
+        accessKey
 )
 
 store.addCredentials(domain, githubCredentials)
