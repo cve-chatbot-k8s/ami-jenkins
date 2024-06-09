@@ -38,6 +38,11 @@ build {
   }
 
   provisioner "file" {
+    source      = "../groovy/webapp_commit_check.groovy"
+    destination = "/tmp/webapp_commit_check.groovy"
+  }
+
+  provisioner "file" {
     source      = "../scripts/plugins.txt"
     destination = "/home/ubuntu/plugins.txt"
   }

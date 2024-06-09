@@ -26,4 +26,9 @@ The configuration includes the following main sections:
 
 - [Packer](https://www.packer.io/) - Open source tool for creating identical machine images for multiple platforms from a single source configuration.
 
-#happy commit
+
+
+## To Add a new JenkinsJob to the AMI use the following steps:
+1. Create a new DSL job and place it in the /groovy folder
+2. Add the job file into the packer/packer.pkr.hcl file in the provisioners section
+3. in the setup-jenkins.sh file move the job to /var/lib/jenkins folder and change the ownership to jenkins user
