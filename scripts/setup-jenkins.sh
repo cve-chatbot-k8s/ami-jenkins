@@ -30,6 +30,7 @@ sudo chown jenkins:jenkins ./*
 cd /home/ubuntu/ || exit
 sudo mv jcasc.yaml /var/lib/jenkins/
 sudo mv webapp_build.groovy /var/lib/jenkins/
+sudo mv /tmp/webapp_commit_check.groovy /var/lib/jenkins/
 
 # Update file ownership
 cd /var/lib/jenkins/ || exit

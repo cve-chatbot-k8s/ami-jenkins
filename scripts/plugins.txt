@@ -35,3 +35,5 @@ ssh-slaves:latest
 timestamper:latest
 workflow-aggregator:latest
 ws-cleanup:latest
+terraform:latest
+conventional-commits:0.11.2
