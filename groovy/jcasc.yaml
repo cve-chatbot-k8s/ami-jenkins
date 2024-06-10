@@ -1,5 +1,6 @@
 jobs:
   - file: ./webapp_build.groovy
+  - file: ./helm_webapp.groovy
 
 #credentials:
 #  system:
