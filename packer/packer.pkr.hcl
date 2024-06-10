@@ -43,6 +43,11 @@ build {
   }
 
   provisioner "file" {
+    source      = "../groovy/helm_webapp.groovy"
+    destination = "/tmp/helm_webapp.groovy"
+  }
+
+  provisioner "file" {
     source      = "../scripts/plugins.txt"
     destination = "/home/ubuntu/plugins.txt"
   }
