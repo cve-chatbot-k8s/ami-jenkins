@@ -6,8 +6,9 @@ pipelineJob('conventional-commit-check') {
                     remote {
                         url('https://github.com/csye7125-su24-team7/webapp')
                         credentials('github-credentials')
+                        refspec('+refs/pull/*:refs/remotes/origin/pr/*')
                     }
-                    branches('*/main')
+                    branch('${sha1}')
                 }
             }
             scriptPath('Jenkinsfile')
@@ -15,14 +16,14 @@ pipelineJob('conventional-commit-check') {
     }
     triggers {
         githubPullRequest {
-            triggerMode('HEAVY_HOOKS') // Listens for GitHub webhook events
-            events {
-                pullRequestOpened() // Triggers a build when a PR is opened
-            }
+            useGitHubHooks()
+            orgWhitelist('csye7125-su24-team7')
+            allowMembersOfWhitelistedOrgsAsAdmin()
+            userWhitelist('girish332', 'Raj-Adarsh')
         }
     }
+
+    properties {
+        githubProjectUrl('https://github.com/csye7125-su24-team7/webapp')
+    }
 }
-
-
-// groovy.lang.MissingMethodException: No signature of method: javaposse.jobdsl.dsl.helpers.triggers.TriggerContext.github() is applicable for argument types: (script$_run_closure1$_closure3$_closure8) values: [script$_run_closure1$_clo>
-//Jun 10 03:53:54 ip-10-0-1-26 jenkins[3889]: Possible solutions: with(groovy.lang.Closure), githubPush(), getAt(java.lang.String)

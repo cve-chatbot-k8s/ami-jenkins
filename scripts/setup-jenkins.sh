@@ -6,6 +6,10 @@ sudo apt update
 # Install JDK 17
 sudo apt install openjdk-17-jre -y
 
+# Install Node.js v22
+curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
 # Install Jenkins From Official Repository
 sudo wget -O /usr/share/keyrings/jenkins-keyring.asc \
   https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
