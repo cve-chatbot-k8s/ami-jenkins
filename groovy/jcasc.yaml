@@ -3,16 +3,24 @@ jobs:
 #  - file: ./helm_webapp.groovy
   - file: ./webapp_commit_check.groovy
 
-#credentials:
-#  system:
-#    domainCredentials:
-#      - credentials:
-#          - usernamePassword:
-#              scope: GLOBAL
-#              id: "dockerHubCredentials"
-#              username: "DOCKER_USERNAME"
-#              password: "DOCKER_PASSWORD"
-#              description: "Docker Hub Credentials"
+tool:
+  #This tool can't be installed against alpine OS
+  nodejs:
+    defaultProperties:
+      - installSource:
+          installers:
+            - nodeJSInstaller:
+                npmPackagesRefreshHours: 72
+    installations:
+      - name: "node"
+        home: ""
+        properties:
+          - installSource:
+              installers:
+                - nodeJSInstaller:
+                    id: "22"
+                    npmPackagesRefreshHours: 72
+
 unclassified:
   location:
     url: https://jenkins.missionk8s.xyz
