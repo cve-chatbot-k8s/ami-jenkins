@@ -1,56 +1,37 @@
 // Job for Conventional Commit Check for Helm-Webapp
-pipelineJob('helm-conventional-commit-check') {
-    definition {
-        cpsScm {
-            scm {
-                git {
-                    remote {
-                        url('https://github.com/csye7125-su24-team7/helm-webapp')
-                        credentials('github-credentials')
-                    }
-                    branches('*/main')
-                }
-            }
-            scriptPath('Jenkinsfile')
+multibranchPipelineJob('helm-conventional-commit-check') {
+    branchSources {
+        github {
+            id('csye7125-heml-conventional-commit')
+            scanCredentialsId('github-credentials')
+            repoOwner('csye7125-su24-team7')
+            repository('helm-webapp-cve-processor')
         }
     }
-    triggers {
-        githubPullRequest {
-            useGitHubHooks()
-            permitAll()
+
+    orphanedItemStrategy {
+        discardOldItems {
+            numToKeep(-1)
+            daysToKeep(-1)
         }
     }
 }
 
 // Multibranch Pipeline Job for Helm-Webapp Pull Request Checks
-multibranchPipelineJob('helm-pull-request-checks') {
+multibranchPipelineJob('helm-ci-checks') {
     branchSources {
-        branchSource {
-            source {
-                github {
-                    id('helm-webapp-branch-source')
-                    scanCredentialsId('github-credentials')
-                    repoOwner('csye7125-su24-team7')
-                    repository('helm-webapp')
-                }
-            }
-            strategy {
-                allBranchesSame {
-                    buildDiscoveries {
-                        buildRegularBranches()
-                        buildOriginPRMerge()
-                    }
-                }
-            }
+        github {
+            id('csye7125-heml-conventional-commit')
+            scanCredentialsId('github-credentials')
+            repoOwner('csye7125-su24-team7')
+            repository('helm-webapp-cve-processor')
         }
     }
+
     orphanedItemStrategy {
         discardOldItems {
-            daysToKeep(30)
-            numToKeep(10)
+            numToKeep(-1)
+            daysToKeep(-1)
         }
-    }
-    triggers {
-        githubPush()
     }
 }

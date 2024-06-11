@@ -1,6 +1,6 @@
 jobs:
   - file: ./webapp_build.groovy
-#  - file: ./helm_webapp.groovy
+  - file: ./helm_webapp.groovy
   - file: ./webapp_commit_check.groovy
 
 tool:
