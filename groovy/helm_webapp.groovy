@@ -5,9 +5,11 @@ multibranchPipelineJob('helm-conventional-commit-check') {
             source {
                 github {
                     id('csye7125-helm-conventional-commit')
-                    scanCredentialsId('github-credentials')
+                    credentialsId('github-credentials')
                     repoOwner('csye7125-su24-team7')
                     repository('helm-webapp-cve-processor')
+                    repositoryUrl('https://github.com/csye7125-su24-team7/helm-webapp-cve-processor')
+                    configuredByUrl(true)
                     traits {
                         gitHubForkDiscovery {
                             strategyId(1)
@@ -18,7 +20,7 @@ multibranchPipelineJob('helm-conventional-commit-check') {
                     }
                 }
             }
-        }        
+        }
     }
 
     orphanedItemStrategy {
@@ -41,9 +43,11 @@ multibranchPipelineJob('helm-ci-checks') {
             source {
                 github {
                     id('csye7125-helm-ci')
-                    scanCredentialsId('github-credentials')
+                    credentialsId('github-credentials')
                     repoOwner('csye7125-su24-team7')
                     repository('helm-webapp-cve-processor')
+                    repositoryUrl('https://github.com/csye7125-su24-team7/helm-webapp-cve-processor')
+                    configuredByUrl(true)
                     traits {
                         gitHubForkDiscovery {
                             strategyId(1)
@@ -54,7 +58,7 @@ multibranchPipelineJob('helm-ci-checks') {
                     }
                 }
             }
-        }        
+        }
     }
 
     orphanedItemStrategy {
@@ -77,20 +81,23 @@ multibranchPipelineJob('helm-chart-semantic-versioning') {
             source {
                 github {
                     id('csye7125-helm-semver')
-                    scanCredentialsId('github-credentials')
+                    credentialsId('github-credentials')
                     repoOwner('csye7125-su24-team7')
                     repository('helm-webapp-cve-processor')
+                    repositoryUrl('https://github.com/csye7125-su24-team7/helm-webapp-cve-processor')
+                    configuredByUrl(true)
                     traits {
                         gitHubBranchDiscovery {
                             strategyId(1)
                             headWildcardFilter {
                                 includes('main')
+                                excludes('')
                             }
                         }
                     }
                 }
             }
-        }        
+        }
     }
 
     orphanedItemStrategy {

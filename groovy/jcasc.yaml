@@ -3,6 +3,16 @@ jobs:
   - file: ./helm_webapp.groovy
   - file: ./webapp_commit_check.groovy
 
+credentials:
+  system:
+    domainCredentials:
+      - credentials:
+          - gitHubApp:
+              id: "github-app"
+              description: "GitHub App"
+              appId: "${GH_APP_ID}"
+              privateKey: "${GH_APP_PRIVATE_KEY}"
+
 tool:
   #This tool can't be installed against alpine OS
   nodejs:

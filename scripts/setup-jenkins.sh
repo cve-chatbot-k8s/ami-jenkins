@@ -41,6 +41,9 @@ sudo mv /tmp/helm_webapp.groovy /var/lib/jenkins/
 cd /var/lib/jenkins/ || exit
 sudo chown jenkins:jenkins jcasc.yaml ./*.groovy
 
+# Decode the base64 encoded private key
+GH_APP_PRIVATE_KEY_DECODED=$(echo "${GH_APP_PRIVATE_KEY}" | base64 --decode)
+
 # Write environment variables to properties file
 {
   echo "JENKINS_USERNAME=${JENKINS_USERNAME}"
@@ -50,7 +53,7 @@ sudo chown jenkins:jenkins jcasc.yaml ./*.groovy
   echo "DOCKER_USERNAME=${DOCKER_USERNAME}"
   echo "DOCKER_PASSWORD=${DOCKER_PASSWORD}"
   echo "GH_APP_ID=${GH_APP_ID}"
-  echo "GH_APP_PRIVATE_KEY=${GH_APP_PRIVATE_KEY}"
+  echo "GH_APP_PRIVATE_KEY=${GH_APP_PRIVATE_KEY_DECODED}"
 } | sudo tee /var/lib/jenkins/env.properties
 
 # Create init.groovy.d directory if it doesn't exist
