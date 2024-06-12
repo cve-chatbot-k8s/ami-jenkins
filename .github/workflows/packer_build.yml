@@ -36,7 +36,7 @@ jobs:
       - name: Build Packer image
         run: |
           cd ./packer
-          packer build -var "jenkins_username=${{ secrets.JENKINS_USERNAME }}" -var "jenkins_password=${{ secrets.JENKINS_PASSWORD }}" -var "deployment_env=${{ env.DEPLOYMENT_ENV }}" -var "docker_username=${{ env.DOCKER_USERNAME }}" -var "docker_password=${{ env.DOCKER_PASSWORD }}" -var "github_username=${{ secrets.GH_USERNAME }}" -var "github_access_key=${{ secrets.GH_ACCESS_KEY }}" -var "github_app_id=${{ secrets.GH_APP_ID }}" -var "github_b64_password=${{ secrets.GH_APP_PRIVATE_KEY }}".
+          packer build -var "jenkins_username=${{ secrets.JENKINS_USERNAME }}" -var "jenkins_password=${{ secrets.JENKINS_PASSWORD }}" -var "deployment_env=${{ env.DEPLOYMENT_ENV }}" -var "docker_username=${{ env.DOCKER_USERNAME }}" -var "docker_password=${{ env.DOCKER_PASSWORD }}" -var "github_username=${{ secrets.GH_USERNAME }}" -var "github_access_key=${{ secrets.GH_ACCESS_KEY }}" -var "github_app_id=${{ secrets.GH_APP_ID }}" -var "github_b64_password=${{ secrets.GH_APP_PRIVATE_KEY }}" .
         env:
           JENKINS_USERNAME: ${{ secrets.JENKINS_USERNAME }}
           JENKINS_PASSWORD: ${{ secrets.JENKINS_PASSWORD }}
