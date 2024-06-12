@@ -49,7 +49,8 @@ sudo chown jenkins:jenkins jcasc.yaml ./*.groovy
   echo "GH_ACCESS_KEY=${GH_ACCESS_KEY}"
   echo "DOCKER_USERNAME=${DOCKER_USERNAME}"
   echo "DOCKER_PASSWORD=${DOCKER_PASSWORD}"
-
+  echo "GH_APP_ID=${GH_APP_ID}"
+  echo "GH_APP_PRIVATE_KEY=${GH_APP_PRIVATE_KEY}"
 } | sudo tee /var/lib/jenkins/env.properties
 
 # Create init.groovy.d directory if it doesn't exist
