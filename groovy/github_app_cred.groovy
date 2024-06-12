@@ -1,29 +1,28 @@
 import jenkins.model.Jenkins
 import com.cloudbees.plugins.credentials.domains.Domain
+import com.cloudbees.plugins.credentials.impl.BasicSSHUserPrivateKey
 import com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl
 import com.cloudbees.plugins.credentials.CredentialsScope
-
+import hudson.util.Secret
 
 // Load properties file
 def env = new Properties()
 env.load(new FileInputStream("/var/lib/jenkins/env.properties"))
 
-def username = env.getProperty("GH_USERNAME")
-def accessKey = env.getProperty("GH_ACCESS_KEY")
+def appId = env.getProperty("GH_APP_ID")
+def privateKey = env.getProperty("GH_APP_PRIVATE_KEY")
 
 instance = Jenkins.instance
 domain = Domain.global()
 store = instance.getExtensionList(
         "com.cloudbees.plugins.credentials.SystemCredentialsProvider")[0].getStore()
 
-githubCredentials = new UsernamePasswordCredentialsImpl(
+githubAppCredentials = new UsernamePasswordCredentialsImpl(
         CredentialsScope.GLOBAL,
-        "github-credentials",
-        "GitHub Credentials",
-        username,
-        accessKey
+        "jenkins-release",
+        "GitHub App Credentials",
+        appId,
+        privateKey
 )
 
-def jenkins_bot = env.getProperty("GH_USERNAME")
-
-store.addCredentials(domain, githubCredentials)
+store.addCredentials(domain, githubAppCredentials)

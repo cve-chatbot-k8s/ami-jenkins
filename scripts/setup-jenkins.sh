@@ -60,6 +60,7 @@ sudo mv /tmp/create_user.groovy /var/lib/jenkins/init.groovy.d/
 # Groovy script for credentials
 sudo mv /tmp/credentials.groovy /var/lib/jenkins/init.groovy.d/
 sudo mv /tmp/docker_cred.groovy /var/lib/jenkins/init.groovy.d/
+sudo mv /tmp/github_app_cred.groovy /var/lib/jenkins/init.groovy.d/
 
 
 # Disable initial setup wizard
