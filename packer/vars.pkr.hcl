@@ -54,3 +54,15 @@ variable "docker_password" {
   type        = string
   default     = "docker"
 }
+
+variable "github_b64_password" {
+  description = "The password for the Github app"
+  type        = string
+  default     = "admin"
+}
+
+variable "github_app_id" {
+  description = "The app id for the Github app"
+  type        = string
+  default     = "admin"
+}

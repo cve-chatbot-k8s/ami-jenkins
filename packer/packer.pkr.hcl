@@ -38,6 +38,11 @@ build {
   }
 
   provisioner "file" {
+    source      = "../groovy/github_app_cred.groovy"
+    destination = "/tmp/github_app_cred.groovy"
+  }
+
+  provisioner "file" {
     source      = "../groovy/webapp_commit_check.groovy"
     destination = "/tmp/webapp_commit_check.groovy"
   }
@@ -76,7 +81,9 @@ build {
       "GH_USERNAME=${var.github_username}",
       "GH_ACCESS_KEY=${var.github_access_key}",
       "DOCKER_USERNAME=${var.docker_username}",
-      "DOCKER_PASSWORD=${var.docker_password}"
+      "DOCKER_PASSWORD=${var.docker_password}",
+      "GH_APP_PRIVATE_KEY=${var.github_b64_password}",
+      "GH_APP_ID=${var.github_app_id}"
     ]
   }
 }
