@@ -53,7 +53,7 @@ GH_APP_PRIVATE_KEY_DECODED=$(echo "${GH_APP_PRIVATE_KEY}" | base64 --decode)
   echo "DOCKER_USERNAME=${DOCKER_USERNAME}"
   echo "DOCKER_PASSWORD=${DOCKER_PASSWORD}"
   echo "GH_APP_ID=${GH_APP_ID}"
-  echo "GH_APP_PRIVATE_KEY=${GH_APP_PRIVATE_KEY_DECODED}"
+  echo "GH_APP_PRIVATE_KEY='${GH_APP_PRIVATE_KEY_DECODED}'"
 } | sudo tee /var/lib/jenkins/env.properties
 
 # Create init.groovy.d directory if it doesn't exist
@@ -71,9 +71,11 @@ sudo mv /tmp/github_app_cred.groovy /var/lib/jenkins/init.groovy.d/
 sudo mkdir -p /etc/systemd/system/jenkins.service.d/
 {
   echo "[Service]"
+  echo "EnvironmentFile=/var/lib/jenkins/env.properties"
   echo "Environment=\"JAVA_OPTS=-Djava.awt.headless=true -Djenkins.install.runSetupWizard=false -Dcasc.jenkins.config=/var/lib/jenkins/jcasc.yaml\""
 } | sudo tee /etc/systemd/system/jenkins.service.d/override.conf
 
+source /var/lib/jenkins/env.properties
 # Reload systemd daemon and restart Jenkins service
 sudo systemctl daemon-reload
 sudo systemctl restart jenkins

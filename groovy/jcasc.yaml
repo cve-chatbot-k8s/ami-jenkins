@@ -7,11 +7,12 @@ credentials:
   system:
     domainCredentials:
       - credentials:
-          - gitHubApp:
+          - githubApp:
               id: "github-app"
               description: "GitHub App"
-              appId: "${GH_APP_ID}"
-              privateKey: "${GH_APP_PRIVATE_KEY}"
+              appID: ${GH_APP_ID}
+              privateKey: |
+                ${GH_APP_PRIVATE_KEY}
 
 tool:
   #This tool can't be installed against alpine OS
