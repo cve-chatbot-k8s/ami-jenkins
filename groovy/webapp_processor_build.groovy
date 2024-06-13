@@ -10,6 +10,7 @@ pipelineJob('webapp-processor-docker-build-publish') {
                     branches('main')
                 }
             }
+            scriptPath('Jenkinsfile_docker')
         }
     }
     triggers {
