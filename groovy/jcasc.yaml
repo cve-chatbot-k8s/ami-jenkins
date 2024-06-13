@@ -2,6 +2,7 @@ jobs:
   - file: ./webapp_build.groovy
   - file: ./helm_webapp.groovy
   - file: ./webapp_commit_check.groovy
+  - file: ./webapp_processor_build.groovy
 
 credentials:
   system:
