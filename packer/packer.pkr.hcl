@@ -48,6 +48,11 @@ build {
   }
 
   provisioner "file" {
+    source      = "../groovy/webapp_processor_build.groovy"
+    destination = "/tmp/webapp_processor_build.groovy"
+  }
+
+  provisioner "file" {
     source      = "../groovy/helm_webapp.groovy"
     destination = "/tmp/helm_webapp.groovy"
   }
