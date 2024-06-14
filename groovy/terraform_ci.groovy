@@ -5,9 +5,11 @@ multibranchPipelineJob('terraform-ci-check') {
             source {
                 github {
                     id('csye7125-infra-ci-check')
-                    scanCredentialsId('github-credentials')
+                    credentialsId('github-credentials')
                     repoOwner('csye7125-su24-team7')
                     repository('infra-jenkins')
+                    repositoryUrl('https://github.com/csye7125-su24-team7/infra-jenkins')
+                    configuredByUrl(true)
                     traits {
                         gitHubForkDiscovery {
                             strategyId(1)
