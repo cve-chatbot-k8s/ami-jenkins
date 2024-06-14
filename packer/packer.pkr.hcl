@@ -48,6 +48,12 @@ build {
   }
 
   provisioner "file" {
+    source      = "../groovy/terraform_ci.groovy"
+    destination = "/tmp/terraform_ci.groovy"
+  }
+
+
+  provisioner "file" {
     source      = "../groovy/webapp_processor_build.groovy"
     destination = "/tmp/webapp_processor_build.groovy"
   }
