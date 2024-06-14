@@ -2,6 +2,7 @@ jobs:
   - file: ./webapp_build.groovy
   - file: ./helm_webapp.groovy
   - file: ./webapp_commit_check.groovy
+  - file: ./terraform_ci.groovy
 
 tool:
   #This tool can't be installed against alpine OS
