@@ -4,7 +4,7 @@ multibranchPipelineJob('commit-check-webapp') {
             id('csye7125-webapp-pr')
             scanCredentialsId('github-credentials')
             repoOwner('csye7125-su24-team7')
-            repository('webapp')
+            repository('webapp-cve-processor')
         }
     }
 
