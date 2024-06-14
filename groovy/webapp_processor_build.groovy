@@ -6,8 +6,8 @@ multibranchPipelineJob('webapp-processor-docker-build-publish') {
                     id('csye7125-webapp')
                     credentialsId('github-credentials')
                     repoOwner('csye7125-su24-team7')
-                    repository('webapp')
-                    repositoryUrl('https://github.com/csye7125-su24-team7/webapp')
+                    repository('webapp-cve-processor')
+                    repositoryUrl('https://github.com/csye7125-su24-team7/webapp-cve-processor')
                     configuredByUrl(true)
                     traits {
                         gitHubBranchDiscovery {
