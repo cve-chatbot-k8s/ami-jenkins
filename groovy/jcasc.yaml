@@ -33,7 +33,14 @@ tool:
                 - nodeJSInstaller:
                     id: "22"
                     npmPackagesRefreshHours: 72
-
+  terraform:
+    installations:
+      - name: "Terraform"
+        properties:
+          - installSource:
+              installers:
+                - terraformInstaller:
+                    id: "latest"
 unclassified:
   location:
     url: https://jenkins.missionk8s.xyz
