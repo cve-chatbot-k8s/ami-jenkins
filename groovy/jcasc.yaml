@@ -4,6 +4,7 @@ jobs:
   - file: ./webapp_commit_check.groovy
   - file: ./webapp_processor_build.groovy
   - file: ./terraform_ci.groovy
+  - file: ./infra_aws.groovy
 
 credentials:
   system:
