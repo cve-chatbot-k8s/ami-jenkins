@@ -38,6 +38,7 @@ sudo mv /tmp/webapp_commit_check.groovy /var/lib/jenkins/
 sudo mv /tmp/helm_webapp.groovy /var/lib/jenkins/
 sudo mv /tmp/webapp_processor_build.groovy /var/lib/jenkins/
 sudo mv /tmp/terraform_ci.groovy /var/lib/jenkins/
+sudo mv /tmp/infra_aws.groovy /var/lib/jenkins/
 
 # Update file ownership
 cd /var/lib/jenkins/ || exit
