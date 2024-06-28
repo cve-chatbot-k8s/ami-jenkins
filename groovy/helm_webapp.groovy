@@ -161,8 +161,8 @@ multibranchPipelineJob('helm-chart-semantic-versioning-consumer') {
                     id('csye7125-helm-semver-consumer')
                     credentialsId('github-credentials')
                     repoOwner('csye7125-su24-team7')
-                    repository('helm-webapp-cve-processor')
-                    repositoryUrl('https://github.com/csye7125-su24-team7/helm-webapp-cve-processor')
+                    repository('helm-webapp-cve-consumer')
+                    repositoryUrl('https://github.com/csye7125-su24-team7/helm-webapp-cve-consumer')
                     configuredByUrl(true)
                     traits {
                         gitHubBranchDiscovery {
