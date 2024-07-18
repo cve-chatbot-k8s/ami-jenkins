@@ -190,3 +190,82 @@ multibranchPipelineJob('helm-chart-semantic-versioning-consumer') {
         }
     }
 }
+
+
+
+// Job for Conventional Commit Check for Helm-Webapp autoscaler
+multibranchPipelineJob('helm-conventional-commit-check-autoscaler') {
+    branchSources {
+        branchSource {
+            source {
+                github {
+                    id('csye7125-helm-conventional-commit-autoscaler')
+                    credentialsId('github-credentials')
+                    repoOwner('csye7125-su24-team7')
+                    repository('helm-eks-autoscaler')
+                    repositoryUrl('https://github.com/csye7125-su24-team7/helm-eks-autoscaler')
+                    configuredByUrl(true)
+                    traits {
+                        gitHubForkDiscovery {
+                            strategyId(1)
+                            trust {
+                                gitHubTrustPermissions()
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    orphanedItemStrategy {
+        discardOldItems {
+            numToKeep(-1)
+            daysToKeep(-1)
+        }
+    }
+    factory {
+        workflowBranchProjectFactory {
+            scriptPath('Jenkinsfile') // This is the Jenkinsfile for Conventional Commit Check
+        }
+    }
+}
+
+// Separate Pipeline Job for Semantic Versioning for Helm-Webapp cve autoscaler
+multibranchPipelineJob('helm-chart-semantic-versioning-autoscaler') {
+    branchSources {
+        branchSource {
+            source {
+                github {
+                    id('csye7125-helm-semver-autoscaler')
+                    credentialsId('github-credentials')
+                    repoOwner('csye7125-su24-team7')
+                    repository('helm-eks-autoscaler')
+                    repositoryUrl('https://github.com/csye7125-su24-team7/helm-eks-autoscaler')
+                    configuredByUrl(true)
+                    traits {
+                        gitHubBranchDiscovery {
+                            strategyId(1)
+                            headWildcardFilter {
+                                includes('main')
+                                excludes('')
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    orphanedItemStrategy {
+        discardOldItems {
+            numToKeep(-1)
+            daysToKeep(-1)
+        }
+    }
+    factory {
+        workflowBranchProjectFactory {
+            scriptPath('Jenkinsfile_releaserc') // This is the Jenkinsfile for CI checks
+        }
+    }
+}
