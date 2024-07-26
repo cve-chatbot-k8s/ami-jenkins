@@ -44,3 +44,26 @@ multibranchPipelineJob('commit-check-webapp-consumer') {
         }
     }
 }
+
+multibranchPipelineJob('commit-chech-cve-operator') {
+    branchSources {
+        github {
+            id('csye7125-cve-operator')
+            scanCredentialsId('github-credentials')
+            repoOwner('csye7125-su24-team7')
+            repository('cve-operator')
+        }
+    }
+
+    orphanedItemStrategy {
+        discardOldItems {
+            numToKeep(-1)
+            daysToKeep(-1)
+        }
+    }
+    factory {
+        workflowBranchProjectFactory {
+            scriptPath('Jenkinsfile') // This is the Jenkinsfile for CI checks
+        }
+    }
+}
