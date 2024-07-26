@@ -269,3 +269,80 @@ multibranchPipelineJob('helm-chart-semantic-versioning-autoscaler') {
         }
     }
 }
+
+// Job for Conventional Commit Check for Helm-cve-operator
+multibranchPipelineJob('helm-conventional-commit-check-cve-operator') {
+    branchSources {
+        branchSource {
+            source {
+                github {
+                    id('csye7125-helm-conventional-commit-cve-operator')
+                    credentialsId('github-credentials')
+                    repoOwner('csye7125-su24-team7')
+                    repository('helm-cve-operator')
+                    repositoryUrl('https://github.com/csye7125-su24-team7/helm-cve-operator')
+                    configuredByUrl(true)
+                    traits {
+                        gitHubForkDiscovery {
+                            strategyId(1)
+                            trust {
+                                gitHubTrustPermissions()
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    orphanedItemStrategy {
+        discardOldItems {
+            numToKeep(-1)
+            daysToKeep(-1)
+        }
+    }
+    factory {
+        workflowBranchProjectFactory {
+            scriptPath('Jenkinsfile') // This is the Jenkinsfile for Conventional Commit Check
+        }
+    }
+}
+
+// Separate Pipeline Job for Semantic Versioning for cve-operator
+multibranchPipelineJob('helm-chart-semantic-versioning-cve-operator') {
+    branchSources {
+        branchSource {
+            source {
+                github {
+                    id('csye7125-helm-semver-cve-operator')
+                    credentialsId('github-credentials')
+                    repoOwner('csye7125-su24-team7')
+                    repository('helm-cve-operator')
+                    repositoryUrl('https://github.com/csye7125-su24-team7/helm-cve-operator')
+                    configuredByUrl(true)
+                    traits {
+                        gitHubBranchDiscovery {
+                            strategyId(1)
+                            headWildcardFilter {
+                                includes('main')
+                                excludes('')
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    orphanedItemStrategy {
+        discardOldItems {
+            numToKeep(-1)
+            daysToKeep(-1)
+        }
+    }
+    factory {
+        workflowBranchProjectFactory {
+            scriptPath('Jenkinsfile_releaserc') // This is the Jenkinsfile for CI checks
+        }
+    }
+}
