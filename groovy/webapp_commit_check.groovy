@@ -66,6 +66,7 @@ multibranchPipelineJob('commit-check-cve-operator') {
             scriptPath('Jenkinsfile') // This is the Jenkinsfile for CI checks
         }
     }
+}
 
 multibranchPipelineJob('commit-check-vector') {
     branchSources {
