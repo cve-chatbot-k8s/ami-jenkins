@@ -1,5 +1,6 @@
 # Jenkins Master AMI Builder
 
+
 This project uses Packer to build an Amazon Machine Image (AMI) with a Jenkins Server.
 
 ## Prerequisites
